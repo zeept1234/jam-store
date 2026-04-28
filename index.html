@@ -17,6 +17,7 @@
       <div class="nav-links">
         <a href="#menu">Menu</a>
         <a href="#pickup">Pickup</a>
+        <a href="#payments">Payments</a>
         <a href="#visit">Visit</a>
       </div>
     </nav>
@@ -66,9 +67,23 @@
           <h3>Order Preview</h3>
           <pre id="orderText">Fill the form to generate your pickup message.</pre>
           <a id="smsButton" class="btn btn-disabled" href="#" aria-disabled="true">Send SMS</a>
+          <a id="payButton" class="btn btn-pay btn-disabled" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Pay for Pickup</a>
+          <p id="payHint" class="tiny">Set your payment provider below to activate online payment.</p>
           <p class="tiny">If SMS button does not open on your device, copy the message and call the store.</p>
         </aside>
       </div>
+    </section>
+
+    <section id="payments" class="section container">
+      <h2>Payment Provider Setup</h2>
+      <p>Use this section to connect Stripe, Square, PayPal, or any hosted checkout page.</p>
+      <form id="paymentForm" class="order-form payment-box">
+        <label>Provider name<input name="providerName" type="text" placeholder="Example: Stripe Payment Link" /></label>
+        <label>Checkout URL<input name="checkoutUrl" type="url" placeholder="https://..." /></label>
+        <label>Payment instructions (optional)<textarea name="paymentNote" rows="3" placeholder="Example: Please include customer name in checkout notes."></textarea></label>
+        <button class="btn" type="submit">Save Payment Setup</button>
+      </form>
+      <p id="paymentStatus" class="note"></p>
     </section>
 
     <section id="visit" class="section container">

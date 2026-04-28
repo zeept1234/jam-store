@@ -43,7 +43,61 @@ lightbox.addEventListener("click", (event) => {
 const form = document.getElementById("orderForm");
 const orderText = document.getElementById("orderText");
 const smsButton = document.getElementById("smsButton");
+const payButton = document.getElementById("payButton");
+const payHint = document.getElementById("payHint");
+const paymentForm = document.getElementById("paymentForm");
+const paymentStatus = document.getElementById("paymentStatus");
 const pickupPhone = "+61431668828";
+const PAYMENT_KEY = "kangnam_payment_setup";
+
+function loadPaymentSetup() {
+  try {
+    const raw = localStorage.getItem(PAYMENT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function savePaymentSetup(data) {
+  localStorage.setItem(PAYMENT_KEY, JSON.stringify(data));
+}
+
+function applyPaymentSetup(setup) {
+  if (!setup || !setup.checkoutUrl) {
+    payButton.classList.add("btn-disabled");
+    payButton.href = "#";
+    payButton.setAttribute("aria-disabled", "true");
+    payHint.textContent = "Set your payment provider below to activate online payment.";
+    return;
+  }
+
+  payButton.classList.remove("btn-disabled");
+  payButton.href = setup.checkoutUrl;
+  payButton.setAttribute("aria-disabled", "false");
+  const provider = setup.providerName || "Payment provider";
+  const note = setup.paymentNote ? ` ${setup.paymentNote}` : "";
+  payHint.textContent = `${provider} connected.${note}`;
+}
+
+paymentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(paymentForm);
+  const setup = {
+    providerName: (data.get("providerName") || "").toString().trim(),
+    checkoutUrl: (data.get("checkoutUrl") || "").toString().trim(),
+    paymentNote: (data.get("paymentNote") || "").toString().trim()
+  };
+
+  if (!setup.checkoutUrl) {
+    paymentStatus.textContent = "Please enter a checkout URL.";
+    return;
+  }
+
+  savePaymentSetup(setup);
+  applyPaymentSetup(setup);
+  paymentStatus.textContent = "Payment provider saved on this device.";
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -79,3 +133,11 @@ form.addEventListener("submit", (event) => {
   smsButton.classList.remove("btn-disabled");
   smsButton.setAttribute("aria-disabled", "false");
 });
+
+const existingSetup = loadPaymentSetup();
+if (existingSetup) {
+  paymentForm.providerName.value = existingSetup.providerName || "";
+  paymentForm.checkoutUrl.value = existingSetup.checkoutUrl || "";
+  paymentForm.paymentNote.value = existingSetup.paymentNote || "";
+}
+applyPaymentSetup(existingSetup);
