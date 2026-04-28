@@ -1,32 +1,33 @@
 ﻿:root {
-  --bg: #fff8f0;
-  --paper: #ffffff;
-  --ink: #2f1a11;
-  --berry: #a12757;
-  --peach: #ffb07c;
-  --gold: #f2d26b;
+  --ink: #f8efe7;
+  --text: #2b211c;
+  --red: #8f1f1f;
+  --charcoal: #1a1311;
+  --gold: #e1b353;
+  --paper: #fff9f2;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: "DM Sans", sans-serif;
-  color: var(--ink);
-  background: radial-gradient(circle at 10% 10%, #ffe6e6 0%, transparent 35%),
-              radial-gradient(circle at 80% 30%, #ffeccf 0%, transparent 40%),
-              var(--bg);
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 88% 12%, rgba(225,179,83,0.18), transparent 36%),
+              radial-gradient(circle at 10% 78%, rgba(143,31,31,0.10), transparent 38%),
+              #fff3e7;
   line-height: 1.6;
 }
 
 .container {
-  width: min(1040px, 92%);
+  width: min(1080px, 92%);
   margin: 0 auto;
 }
 
 .hero {
+  color: var(--ink);
+  background: linear-gradient(135deg, rgba(26,19,17,0.95), rgba(52,23,21,0.94));
   padding-bottom: 4rem;
-  background: linear-gradient(130deg, #fff3ef 0%, #fff8ee 50%, #fff6d9 100%);
 }
 
 .nav {
@@ -36,40 +37,50 @@ body {
   padding: 1rem 0;
 }
 
+.brand, h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+}
+
 .brand {
-  font-family: "Fraunces", serif;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
 
 .hero-content {
   text-align: center;
-  padding: 5rem 0 2rem;
-  animation: rise 0.7s ease both;
+  padding: 5.5rem 0 2rem;
+  animation: fadeInUp 0.8s ease both;
 }
 
 .kicker {
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  color: #f2d4ac;
   font-size: 0.78rem;
-  color: #6f4b3c;
 }
 
 h1, h2, h3 {
-  font-family: "Fraunces", serif;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.65rem;
   line-height: 1.2;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.6rem);
-  max-width: 13ch;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  max-width: 15ch;
   margin-inline: auto;
 }
 
 .lead {
-  max-width: 56ch;
+  max-width: 58ch;
   margin: 0 auto 1.5rem;
+  color: #f8e8d7;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .section {
@@ -85,32 +96,28 @@ h1 {
 
 .card {
   background: var(--paper);
-  border: 1px solid #f1dac8;
+  border: 1px solid #efd8c4;
   border-radius: 16px;
-  padding: 1.2rem;
-  box-shadow: 0 10px 20px rgba(78, 42, 33, 0.06);
-  transition: transform 0.2s ease;
+  padding: 1.25rem;
+  box-shadow: 0 10px 24px rgba(50, 28, 15, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-}
-
-.price {
-  color: var(--berry);
-  font-weight: 700;
+  box-shadow: 0 16px 28px rgba(50, 28, 15, 0.12);
 }
 
 .strip {
-  background: linear-gradient(90deg, #fff1e2, #fff9e7);
-  border-top: 1px solid #efd8bc;
-  border-bottom: 1px solid #efd8bc;
+  background: linear-gradient(90deg, #fff3e3, #ffeccf);
+  border-top: 1px solid #ebd2b8;
+  border-bottom: 1px solid #ebd2b8;
 }
 
 .split {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
 }
 
 ul {
@@ -120,31 +127,36 @@ ul {
 
 .btn {
   display: inline-block;
-  background: var(--berry);
+  background: var(--red);
   color: #fff;
   text-decoration: none;
-  padding: 0.55rem 0.95rem;
+  padding: 0.56rem 0.98rem;
   border-radius: 999px;
   font-weight: 700;
 }
 
 .btn-large {
-  padding: 0.8rem 1.3rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #f0d6bb;
+  color: #fff;
 }
 
 .footer {
   padding: 1.2rem 0;
-  border-top: 1px solid #e8cfbd;
+  border-top: 1px solid #e4c9ac;
   font-size: 0.92rem;
+  background: #fff6ec;
 }
 
-@keyframes rise {
-  from { transform: translateY(10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 760px) {
-  .split {
-    grid-template-columns: 1fr;
-  }
+  .split { grid-template-columns: 1fr; }
 }
