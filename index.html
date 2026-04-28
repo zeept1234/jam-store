@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kangnam Korean BBQ Epping</title>
-  <meta name="description" content="Kangnam Korean BBQ Epping - premium Korean barbecue, hotplates, and classic Korean dishes in Epping NSW." />
+  <title>Kangnam Korean BBQ Epping | Pickup & Full Menu</title>
+  <meta name="description" content="Kangnam Korean BBQ Epping - browse the full menu and place pickup orders." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,65 +13,81 @@
 <body>
   <header class="hero">
     <nav class="nav container">
-      <div class="brand">Kangnam Korean BBQ</div>
-      <a class="btn" href="#contact">Book Now</a>
+      <div class="brand">Kangnam Korean BBQ Epping</div>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#pickup">Pickup</a>
+        <a href="#visit">Visit</a>
+      </div>
     </nav>
 
     <div class="hero-content container">
-      <p class="kicker">Epping, NSW</p>
-      <h1>Fire-Grilled Korean BBQ in the Heart of Epping</h1>
-      <p class="lead">Gather around the hotplate for premium meats, smoky flavors, and the full Korean barbecue experience.</p>
+      <p class="kicker">Authentic Korean BBQ in Epping, NSW</p>
+      <h1>Full Menu + Pickup Ordering</h1>
+      <p class="lead">Browse every official Epping menu page, build your order, and send pickup request directly by SMS.</p>
       <div class="hero-actions">
-        <a class="btn btn-large" href="#menu">View Menu Highlights</a>
-        <a class="btn btn-ghost" href="https://www.google.com/maps/place/Kangnam+Korean+BBQ+Epping/" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+        <a class="btn btn-large" href="#menu">See Full Menu</a>
+        <a class="btn btn-ghost" href="#pickup">Start Pickup Order</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section container" id="menu">
-      <h2>Menu Highlights</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Marinated Beef Set</h3>
-          <p>Tender, savory beef cuts marinated in house sauce and grilled table-side.</p>
-        </article>
-        <article class="card">
-          <h3>Pork Belly BBQ</h3>
-          <p>Classic samgyeopsal with fresh lettuce wraps, garlic, and ssamjang.</p>
-        </article>
-        <article class="card">
-          <h3>Korean Hot Food</h3>
-          <p>Enjoy comforting favorites like bibimbap, stews, and crispy Korean sides.</p>
-        </article>
+    <section id="menu" class="section container">
+      <div class="section-head">
+        <h2>Full Epping Menu</h2>
+        <a class="text-link" href="https://kangnambbq.com.au/epping-menu" target="_blank" rel="noopener noreferrer">Official menu source</a>
       </div>
+      <p>Tap any page to open it in full size.</p>
+      <div class="menu-grid" id="menuGrid"></div>
     </section>
 
-    <section class="section strip" id="about">
-      <div class="container split">
+    <section id="pickup" class="section strip">
+      <div class="container pickup-wrap">
         <div>
-          <h2>Why Diners Love Kangnam</h2>
-          <p>Fresh ingredients, quality cuts, and a warm atmosphere made for family dinners, birthday gatherings, and casual nights out.</p>
+          <h2>Pickup Order Builder</h2>
+          <p>Create your order details below, then send the request by SMS to the restaurant.</p>
+          <p class="note">Pickup line: <a href="tel:+61431668828">0431 668 828</a></p>
+
+          <form id="orderForm" class="order-form">
+            <label>Name<input required name="name" type="text" placeholder="Your name" /></label>
+            <label>Mobile<input required name="phone" type="tel" placeholder="04xx xxx xxx" /></label>
+            <label>Pickup time<input required name="pickupTime" type="datetime-local" /></label>
+            <label>Items (one per line)<textarea required name="items" rows="6" placeholder="Example:
+1x Kogi Set 3
+1x Seafood Pancake
+2x Original Fried Chicken (half)"></textarea></label>
+            <label>Notes<textarea name="notes" rows="3" placeholder="Allergies, spice level, requests"></textarea></label>
+            <button class="btn" type="submit">Generate Pickup SMS</button>
+          </form>
         </div>
-        <ul>
-          <li>Interactive tabletop grilling experience</li>
-          <li>Friendly staff and group-friendly seating</li>
-          <li>Lunch and dinner service most days</li>
-        </ul>
+
+        <aside class="order-preview">
+          <h3>Order Preview</h3>
+          <pre id="orderText">Fill the form to generate your pickup message.</pre>
+          <a id="smsButton" class="btn btn-disabled" href="#" aria-disabled="true">Send SMS</a>
+          <p class="tiny">If SMS button does not open on your device, copy the message and call the store.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="section container" id="contact">
-      <h2>Visit Kangnam Korean BBQ Epping</h2>
+    <section id="visit" class="section container">
+      <h2>Visit Kangnam BBQ Epping</h2>
       <p><strong>Address:</strong> 6 Chambers Ct, Epping NSW 2121</p>
-      <p><strong>Phone:</strong> <a href="tel:+61431668828">0431 668 828</a></p>
       <p><strong>Hours:</strong> Mon 11:00-15:00 & 17:00-21:00, Tue Closed, Wed-Sun 11:00-15:00 & 17:00-21:00</p>
-      <p><a class="btn" href="https://www.google.com/maps/place/Kangnam+Korean+BBQ+Epping/" target="_blank" rel="noopener noreferrer">Get Directions</a></p>
+      <p><a class="btn" href="https://www.google.com/maps/place/Kangnam+Korean+BBQ+Epping/" target="_blank" rel="noopener noreferrer">Open in Google Maps</a></p>
     </section>
   </main>
 
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="closeLightbox" class="close-btn" type="button">Close</button>
+    <img id="lightboxImage" alt="Kangnam menu full size" />
+  </div>
+
   <footer class="footer">
-    <div class="container">© 2026 Kangnam Korean BBQ Epping</div>
+    <div class="container">Built for Kangnam Korean BBQ Epping. Menu images source: kangnambbq.com.au.</div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

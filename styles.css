@@ -13,116 +13,85 @@ body {
   margin: 0;
   font-family: "Manrope", sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 88% 12%, rgba(225,179,83,0.18), transparent 36%),
-              radial-gradient(circle at 10% 78%, rgba(143,31,31,0.10), transparent 38%),
+  background: radial-gradient(circle at 90% 10%, rgba(225,179,83,.18), transparent 35%),
+              radial-gradient(circle at 15% 80%, rgba(143,31,31,.12), transparent 40%),
               #fff3e7;
   line-height: 1.6;
 }
 
-.container {
-  width: min(1080px, 92%);
-  margin: 0 auto;
-}
+.container { width: min(1120px, 92%); margin: 0 auto; }
 
 .hero {
   color: var(--ink);
-  background: linear-gradient(135deg, rgba(26,19,17,0.95), rgba(52,23,21,0.94));
-  padding-bottom: 4rem;
+  background: linear-gradient(140deg, rgba(22,16,14,.96), rgba(62,25,22,.93));
+  padding-bottom: 3.2rem;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+.brand, h1, h2, h3 { font-family: "Playfair Display", serif; }
+.brand { font-size: 1.3rem; font-weight: 700; }
+.nav-links { display: flex; gap: .8rem; }
+.nav-links a { color: #f6ddc3; text-decoration: none; font-weight: 600; }
 
-.brand, h1, h2, h3 {
-  font-family: "Playfair Display", serif;
-}
+.hero-content { text-align: center; padding: 4.8rem 0 1.3rem; animation: fadeUp .8s ease both; }
+.kicker { text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; color: #efcc9d; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.lead { max-width: 62ch; margin: 0 auto 1.4rem; color: #f9e8d6; }
 
-.brand {
-  font-size: 1.35rem;
-  font-weight: 700;
-}
+.hero-actions { display: flex; justify-content: center; gap: .8rem; flex-wrap: wrap; }
+.section { padding: 3.2rem 0; }
+.section-head { display: flex; justify-content: space-between; gap: .7rem; align-items: baseline; flex-wrap: wrap; }
+.text-link { color: #7f1f1f; font-weight: 700; }
 
-.hero-content {
-  text-align: center;
-  padding: 5.5rem 0 2rem;
-  animation: fadeInUp 0.8s ease both;
-}
-
-.kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #f2d4ac;
-  font-size: 0.78rem;
-}
-
-h1, h2, h3 {
-  margin: 0 0 0.65rem;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  max-width: 15ch;
-  margin-inline: auto;
-}
-
-.lead {
-  max-width: 58ch;
-  margin: 0 auto 1.5rem;
-  color: #f8e8d7;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-.section {
-  padding: 4rem 0;
-}
-
-.cards {
+.menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: .8rem;
 }
-
-.card {
+.menu-card {
   background: var(--paper);
-  border: 1px solid #efd8c4;
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 10px 24px rgba(50, 28, 15, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #edd8c3;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(47, 25, 18, .1);
+  cursor: pointer;
+  transition: transform .2s ease;
 }
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 28px rgba(50, 28, 15, 0.12);
-}
+.menu-card:hover { transform: translateY(-3px); }
+.menu-card img { width: 100%; display: block; aspect-ratio: 1 / 1; object-fit: cover; }
+.menu-card p { margin: .65rem .8rem .9rem; font-weight: 700; }
 
 .strip {
-  background: linear-gradient(90deg, #fff3e3, #ffeccf);
-  border-top: 1px solid #ebd2b8;
-  border-bottom: 1px solid #ebd2b8;
+  background: linear-gradient(90deg, #fff1de, #ffe7c8);
+  border-top: 1px solid #ebceb0;
+  border-bottom: 1px solid #ebceb0;
+}
+.pickup-wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; }
+.order-form { display: grid; gap: .7rem; }
+label { display: grid; gap: .25rem; font-weight: 600; }
+input, textarea {
+  width: 100%;
+  padding: .65rem .75rem;
+  border: 1px solid #dcbda2;
+  border-radius: 10px;
+  font: inherit;
+  background: #fffdfb;
 }
 
-.split {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1.35fr 1fr;
+.order-preview {
+  background: #fff9f2;
+  border: 1px solid #e6c8ad;
+  border-radius: 14px;
+  padding: 1rem;
 }
-
-ul {
-  margin: 0;
-  padding-left: 1.2rem;
+pre {
+  white-space: pre-wrap;
+  background: #201714;
+  color: #f3e9df;
+  border-radius: 10px;
+  padding: .8rem;
+  min-height: 240px;
 }
 
 .btn {
@@ -130,33 +99,50 @@ ul {
   background: var(--red);
   color: #fff;
   text-decoration: none;
-  padding: 0.56rem 0.98rem;
+  border: none;
+  padding: .68rem 1rem;
   border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-large { padding: .84rem 1.24rem; }
+.btn-ghost { background: transparent; border: 1px solid #f1d4b1; color: #fff; }
+.btn-disabled { opacity: .5; pointer-events: none; }
+
+.note { font-weight: 700; }
+.tiny { font-size: .84rem; opacity: .84; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: min(1200px, 98vw); max-height: 90vh; border-radius: 10px; }
+.close-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  border: 0;
+  background: #fff;
+  color: #19110f;
+  border-radius: 999px;
+  padding: .55rem .8rem;
   font-weight: 700;
 }
 
-.btn-large {
-  padding: 0.85rem 1.25rem;
-}
+.footer { padding: 1.2rem 0; background: #fff6ec; border-top: 1px solid #e3c5a7; font-size: .92rem; }
 
-.btn-ghost {
-  background: transparent;
-  border: 1px solid #f0d6bb;
-  color: #fff;
-}
-
-.footer {
-  padding: 1.2rem 0;
-  border-top: 1px solid #e4c9ac;
-  font-size: 0.92rem;
-  background: #fff6ec;
-}
-
-@keyframes fadeInUp {
+@keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 760px) {
-  .split { grid-template-columns: 1fr; }
+@media (max-width: 860px) {
+  .pickup-wrap { grid-template-columns: 1fr; }
 }
